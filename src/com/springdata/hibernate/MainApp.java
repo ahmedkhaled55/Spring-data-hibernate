@@ -21,15 +21,21 @@ public class MainApp {
 		
 		Session session = factory.getCurrentSession();
 		
-		Client client = new Client();
-		client.setId((long) 1);
-		client.setFullName("ahmed khaled");
-		client.setAge(26);
-		client.setAddress("benha ");
+		Client client1 = new Client("ahmed khaled",26,"benha");
+		//client1.setId((long) 1);
+		
+		Client client2 = new Client("ahmed khaled",26,"benha");
+		//client2.setId((long) 2);
+		
+		Client client3 = new Client("ahmed khaled",26,"benha");
+		//client3.setId((long) 3);
+		
 		
 		try {
 			session.beginTransaction();
-			session.save(client);		
+			session.save(client1);		
+			session.save(client2);		
+			session.save(client3);		
 			session.getTransaction().commit();
 			
 		} catch (Exception e) {
