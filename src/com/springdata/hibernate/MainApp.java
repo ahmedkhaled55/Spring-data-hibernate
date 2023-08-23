@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 import com.springdata.hibernate.model.Client;
 
 public class MainApp {
@@ -17,26 +18,17 @@ public class MainApp {
 				.configure("hibernate.cfg.xml")			
 				.addAnnotatedClass(Client.class)
 				.buildSessionFactory();
-		
-		
 		Session session = factory.getCurrentSession();
+		long id = 1;
 		
-		Client client1 = new Client("ahmed khaled",26,"benha");
-		//client1.setId((long) 1);
 		
-		Client client2 = new Client("ahmed khaled",26,"benha");
-		//client2.setId((long) 2);
-		
-		Client client3 = new Client("ahmed khaled",26,"benha");
-		//client3.setId((long) 3);
 		
 		
 		try {
 			session.beginTransaction();
-			session.save(client1);		
-			session.save(client2);		
-			session.save(client3);		
+				Client client = session.get(Client.class, id);
 			session.getTransaction().commit();
+			System.out.println(client.getFullName() + " " + client.getAddress() + " " + client.getAge());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -50,6 +42,30 @@ public class MainApp {
 	}
 
 }
+
+/*
+		
+		Client client1 = new Client("ahmed khaled",26,"benha");
+		//client1.setId((long) 1);
+		
+		Client client2 = new Client("ahmed khaled",26,"benha");
+		//client2.setId((long) 2);
+		
+		Client client3 = new Client("ahmed khaled",26,"benha");
+		//client3.setId((long) 3);
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 	session.save(client1);		
+			session.save(client2);		
+			session.save(client3);
+		 
+		  */
+
+
+
+
 
 
 
