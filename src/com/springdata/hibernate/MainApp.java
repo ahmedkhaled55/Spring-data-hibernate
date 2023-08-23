@@ -26,19 +26,24 @@ public class MainApp {
 		
 		try {
 			session.beginTransaction();
-				Client client = session.get(Client.class, id);
-			/*	
+			/*	Client client = session.get(Client.class, id);
+				
 				client.setFullName("omar");
 				client.setAddress("estanha");
 				client.setAge(16);
 				*/
-				Client c = new Client("maz",4,"qal");
+				/*Client c = new Client("maz",4,"qal");
 				c.setId((long) 2);
 				
 				session.update(c);
+				*/
+				
+				Client c = new Client();
+				c.setId((long) 1);
+				session.delete(c);
 				
 			session.getTransaction().commit();
-			System.out.println(c.getFullName() + " " + c.getAddress() + " " + c.getAge());
+		//	System.out.println(c.getFullName() + " " + c.getAddress() + " " + c.getAge());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
