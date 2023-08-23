@@ -1,6 +1,4 @@
 package com.springdata.hibernate.model;
-import java.util.jar.Attributes.Name;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +11,7 @@ public class client {
 	@Id
 	@Column (name = "client_id")
 	private Long id;
-	
+	 
 	@Column (name = "client_name")
 	private String fullName;
 	

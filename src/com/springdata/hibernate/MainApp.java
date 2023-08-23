@@ -1,7 +1,6 @@
 package com.springdata.hibernate;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
