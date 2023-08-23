@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.springdata.hibernate.model.client;
+import com.springdata.hibernate.model.Client;
 
 public class MainApp {
 
@@ -15,11 +15,29 @@ public class MainApp {
 		
 		SessionFactory factory = new Configuration()
 				.configure("hibernate.cfg.xml")			
-				.addAnnotatedClass(client.class)
+				.addAnnotatedClass(Client.class)
 				.buildSessionFactory();
 		
 		
 		Session session = factory.getCurrentSession();
+		
+		Client client = new Client();
+		client.setId((long) 1);
+		client.setFullName("ahmed khaled");
+		client.setAge(26);
+		client.setAddress("benha ");
+		
+		try {
+			session.beginTransaction();
+			session.save(client);		
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+		} finally {
+			session.close();
+		}
 		
 		
 		
