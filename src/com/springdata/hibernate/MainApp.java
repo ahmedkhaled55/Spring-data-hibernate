@@ -27,8 +27,18 @@ public class MainApp {
 		try {
 			session.beginTransaction();
 				Client client = session.get(Client.class, id);
+			/*	
+				client.setFullName("omar");
+				client.setAddress("estanha");
+				client.setAge(16);
+				*/
+				Client c = new Client("maz",4,"qal");
+				c.setId((long) 2);
+				
+				session.update(c);
+				
 			session.getTransaction().commit();
-			System.out.println(client.getFullName() + " " + client.getAddress() + " " + client.getAge());
+			System.out.println(c.getFullName() + " " + c.getAddress() + " " + c.getAge());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
